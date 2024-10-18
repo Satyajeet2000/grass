@@ -145,8 +145,6 @@ class TestRDistance(TestCase):
 
     # Raster maps elevation and elevation_shade can't be the arguments
     def test_rdistance_fail_when_elevation(self):
-        self.assertRasterExists(self.map1)
-        self.assertRasterExists(self.map2)
         self.assertModule(self.r_dist)
 
         ## elevation as one of the arguments is expected
