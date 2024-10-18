@@ -102,7 +102,6 @@ class TestRDistance(TestCase):
         """Ensures expected computational region"""
         cls.use_temp_region()
         cls.runModule("g.region", raster="elevation")
-        
 
     @classmethod
     def tearDownClass(cls):
@@ -124,7 +123,7 @@ class TestRDistance(TestCase):
             sort = self.sort
         )
 
-    # asserting if the output of map=(basins,lake)
+    # asserting if the output of map=(lakes,geology)
     # from NC data is correct
     def test_check_correct_output(self):
         self.assertMultiLineEqual(ans1, self.output)
