@@ -139,9 +139,7 @@ class TestRDistance(TestCase):
         new_rast = "new_rast"
         self.runModule("r.mapcalc.simple", expression="100", output=new_rast)
         new_rast_ans = call_module(
-            "r.distance",
-            map=(self.map1, new_rast),
-            sort = self.sort
+            "r.distance", map=(self.map1, new_rast), sort=self.sort
         )
         self.assertMultiLineEqual(new_rast_ans, newrast_ref)
 
