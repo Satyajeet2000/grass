@@ -115,10 +115,7 @@ class TestRDistance(TestCase):
             "r.distance", map=(self.map1, self.map2), separator=",", sort=self.sort
         )
         self.output = call_module(
-            "r.distance",
-            map=(self.map1, self.map2),
-            separator = ":",
-            sort = self.sort
+            "r.distance", map=(self.map1, self.map2), separator=":", sort=self.sort
         )
 
     # asserting if the output of map=(lakes,geology)
