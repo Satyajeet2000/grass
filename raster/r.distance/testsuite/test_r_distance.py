@@ -122,7 +122,7 @@ class TestRDistance(TestCase):
     # from NC data is correct
     def test_check_correct_output(self):
         self.assertMultiLineEqual(ans1, self.output)
-        #check if l flag gives correct output
+        # check if l flag gives correct output
         lflag_output = call_module(
             "r.distance",
             map=(self.map1, self.map2),
