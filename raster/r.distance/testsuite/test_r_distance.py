@@ -153,10 +153,10 @@ class TestRDistance(TestCase):
         ## to fail
         self.assertModuleFail(
             "r.distance",
-            map=("elevation","geology"), #invalid
-            separator = self.separator,
-            sort = self.sort,
-            msg = "Raster map <elevation> is not CELL"
+            map=("elevation", "geology"),  # invalid
+            separator=self.separator,
+            sort=self.sort,
+            msg="Raster map <elevation> is not CELL",
         )
         ## elevation as one of the arguments is expected
         ## to fail
