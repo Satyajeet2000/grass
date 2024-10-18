@@ -107,38 +107,30 @@ class TestRDistance(TestCase):
     @classmethod
     def tearDownClass(cls):
         new_rast = "new_rast"
-        cls.runModule("g.remove", flags="f", type="raster", name=new_rast)        
+        cls.runModule("g.remove", flags="f", type="raster", name=new_rast)
         cls.del_temp_region()
 
     def setUp(self):
         self.r_dist = SimpleModule(
-            "r.distance",
-            map=(self.map1, self.map2),
-            separator = ",",
-            sort = self.sort
+            "r.distance", map=(self.map1, self.map2), separator=",", sort=self.sort
         )
         self.output = call_module(
-            "r.distance",
-            map=(self.map1, self.map2),
-            separator = ":",
-            sort = self.sort
+            "r.distance", map=(self.map1, self.map2), separator=":", sort=self.sort
         )
 
     # asserting if the output of map=(lakes,geology)
     # from NC data is correct
     def test_check_correct_output(self):
         self.assertMultiLineEqual(ans1, self.output)
-        
-        #check if l flag gives correct output
+        # check if l flag gives correct output
         lflag_output = call_module(
             "r.distance",
             map=(self.map1, self.map2),
-            separator = ":",
-            sort = self.sort,
-            flags="l"
+            separator=":",
+            sort=self.sort,
+            flags="l",
         )
         self.assertMultiLineEqual(ans2, lflag_output)
-
 
     ## creates a new raster map using r.mapcalc.simple
     ## and tests if output is correct
@@ -147,39 +139,35 @@ class TestRDistance(TestCase):
         new_rast = "new_rast"
         self.runModule("r.mapcalc.simple", expression="100", output=new_rast)
         new_rast_ans = call_module(
-            "r.distance",
-            map=(self.map1, new_rast),
-            sort = self.sort
+            "r.distance", map=(self.map1, new_rast), sort=self.sort
         )
         self.assertMultiLineEqual(new_rast_ans, newrast_ref)
 
-    #Raster maps elevation and elevation_shade can't be the arguments
+    # Raster maps elevation and elevation_shade can't be the arguments
     def test_rdistance_fail_when_elevation(self):
-        self.assertRasterExists(self.map1)
-        self.assertRasterExists(self.map2)
         self.assertModule(self.r_dist)
 
         ## elevation as one of the arguments is expected
         ## to fail
         self.assertModuleFail(
             "r.distance",
-            map=("elevation","geology"), #invalid
-            separator = self.separator,
-            sort = self.sort,
-            msg = "Raster map <elevation> is not CELL"
+            map=("elevation", "geology"),  # invalid
+            separator=self.separator,
+            sort=self.sort,
+            msg="Raster map <elevation> is not CELL",
         )
         ## elevation as one of the arguments is expected
         ## to fail
         self.assertModuleFail(
             "r.distance",
-            map=("geology", "elevation_shade"), #invalid
-            separator = self.separator,
-            sort = self.sort,
-            msg = "Raster map <elevation_shade> is not CELL"
+            map=("geology", "elevation_shade"),  # invalid
+            separator=self.separator,
+            sort=self.sort,
+            msg="Raster map <elevation_shade> is not CELL",
         )
 
 
 if __name__ == "__main__":
     from grass.gunittest.main import test
-    test()
 
+    test()
