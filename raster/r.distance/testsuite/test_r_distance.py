@@ -112,10 +112,7 @@ class TestRDistance(TestCase):
 
     def setUp(self):
         self.r_dist = SimpleModule(
-            "r.distance",
-            map=(self.map1, self.map2),
-            separator = ",",
-            sort = self.sort
+            "r.distance", map=(self.map1, self.map2), separator=",", sort=self.sort
         )
         self.output = call_module(
             "r.distance",
