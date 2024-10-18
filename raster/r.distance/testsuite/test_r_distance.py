@@ -3,6 +3,7 @@ from grass.gunittest.gmodules import SimpleModule
 from grass.gunittest.gmodules import call_module
 
 # region set is the default NC location
+# downloaded from the website
 ans1 = """34300:270:0:640445:215235:640445:215235
 34300:910:0:640435:215215:640435:215215
 39000:217:0:637165:215865:637165:215865
