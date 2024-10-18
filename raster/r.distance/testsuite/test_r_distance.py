@@ -107,7 +107,7 @@ class TestRDistance(TestCase):
     @classmethod
     def tearDownClass(cls):
         new_rast = "new_rast"
-        cls.runModule("g.remove", flags="f", type="raster", name=new_rast)        
+        cls.runModule("g.remove", flags="f", type="raster", name=new_rast)
         cls.del_temp_region()
 
     def setUp(self):
