@@ -126,9 +126,9 @@ class TestRDistance(TestCase):
         lflag_output = call_module(
             "r.distance",
             map=(self.map1, self.map2),
-            separator = ":",
-            sort = self.sort,
-            flags="l"
+            separator=":",
+            sort=self.sort,
+            flags="l",
         )
         self.assertMultiLineEqual(ans2, lflag_output)
 
