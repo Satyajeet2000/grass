@@ -132,7 +132,6 @@ class TestRDistance(TestCase):
         )
         self.assertMultiLineEqual(ans2, lflag_output)
 
-
     ## creates a new raster map using r.mapcalc.simple
     ## and tests if output is correct
     def test_newraster_dist_correct(self):
